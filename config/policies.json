@@ -1,0 +1,23 @@
+{
+  "policies": [
+    {
+      "handler": {
+        "export": "OpenIdJwtInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "secret": "$env(JWT_SECRET)"
+        }
+      },
+      "name": "open-id-jwt-auth-inbound",
+      "policyType": "open-id-jwt-auth-inbound"
+    },
+    {
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/check-origin-matches-jwt)"
+      },
+      "name": "check-origin-matches-jwt",
+      "policyType": "custom-code-inbound"
+    }
+  ]
+}
